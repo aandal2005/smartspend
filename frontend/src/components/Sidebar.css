@@ -1,0 +1,14 @@
+.sidebar{
+  width:70px;
+  height:100vh;
+  background:#0b132b;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:20px;
+}
+
+.sidebar a{
+  margin:20px 0;
+  color:white;
+}

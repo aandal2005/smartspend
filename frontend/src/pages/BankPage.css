@@ -1,0 +1,89 @@
+.dashboard-container{
+display:flex;
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+color:white;
+}
+
+.dashboard-content{
+flex:1;
+padding:40px;
+background:linear-gradient(135deg,#0f172a,#020617);
+}
+/* PAGE */
+.bank-page{
+
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+padding:40px;
+color:white;
+
+}
+.bank-container{
+padding:40px;
+color:white;
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+}
+
+/* TITLE */
+
+.bank-title{
+font-size:36px;
+font-weight:700;
+margin-bottom:30px;
+letter-spacing:0.5px;
+}
+
+/* CARDS CONTAINER */
+
+.bank-cards{
+display:grid;
+grid-template-columns:repeat(2,320px);
+gap:25px;
+}
+
+/* CARD */
+
+.bank-card{
+background:linear-gradient(145deg,#1e293b,#111827);
+border-radius:18px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+/* HOVER */
+
+.bank-card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* VALUE */
+
+.bank-value{
+font-size:32px;
+font-weight:700;
+margin-top:6px;
+
+background:linear-gradient(90deg,#7c3aed,#9333ea);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* SPENT COLOR */
+
+.bank-value.spent{
+background:linear-gradient(90deg,#60a5fa,#22c55e);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* SUBTEXT */
+
+.bank-sub{
+font-size:14px;
+color:#94a3b8;
+margin-top:6px;
+}

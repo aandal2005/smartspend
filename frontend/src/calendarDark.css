@@ -1,0 +1,61 @@
+/* Force dark background */
+.react-calendar {
+  background-color: #1e293b !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+}
+
+/* Month header */
+.react-calendar__navigation {
+  background: transparent !important;
+}
+
+.react-calendar__navigation button {
+  color: white !important;
+  background: transparent !important;
+  border-radius: 10px !important;
+}
+
+.react-calendar__navigation button:hover {
+  background: #334155 !important;
+}
+
+/* Weekdays */
+.react-calendar__month-view__weekdays {
+  color: #94a3b8 !important;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* Days */
+.react-calendar__tile {
+  background: transparent !important;
+  color: white !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Hover */
+.react-calendar__tile:hover {
+  background: #334155 !important;
+}
+
+/* Selected date */
+.react-calendar__tile--active {
+  background: #6366f1 !important;
+  color: white !important;
+  box-shadow: 0 0 8px #6366f1 !important;
+}
+
+/* Today */
+.react-calendar__tile--now {
+  background: #0f172a !important;
+  border: 1px solid #6366f1 !important;
+}
+
+/* Remove default focus */
+.react-calendar__tile:focus {
+  outline: none !important;
+}
