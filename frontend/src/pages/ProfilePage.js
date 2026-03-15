@@ -90,7 +90,7 @@ useEffect(() => {
 
         <div className="user-info">
           <img
-  src={defaultAvatar}
+  src={defaultAvatar} alt="profile"
   className="w-16 h-16 rounded-full object-cover"
 />
 
@@ -114,7 +114,7 @@ useEffect(() => {
 
         <div className="edit-header">
          <img
-  src={defaultAvatar}
+  src={defaultAvatar} alt="profile"
   className="w-16 h-16 rounded-full object-cover"
 />
 

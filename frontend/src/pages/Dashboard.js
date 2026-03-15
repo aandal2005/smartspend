@@ -5,7 +5,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../calendarDark.css";
 import React from "react";
-import { MdDashboard } from "react-icons/md";
+
 import {
   BarChart,
   Bar,
@@ -55,7 +55,8 @@ function Dashboard() {
       Authorization: `Bearer ${token}`
     }
   };
-  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 useEffect(() => {
     fetchExpenses();
   fetchBackendMonthly();
@@ -205,8 +206,6 @@ const fetchBackendCategory = async () => {
     return matchCategory && matchDate;
   });
 
-  const average =
-    expenses.length > 0 ? total / expenses.length : 0;
 
   const paymentScore = Math.min(total / 100, 100);
 
