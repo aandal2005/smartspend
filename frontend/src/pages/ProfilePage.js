@@ -89,8 +89,7 @@ useEffect(() => {
       <div className="profile-sidebar">
 
         <div className="user-info">
-          <img
-  src={defaultAvatar} alt="profile"
+          <img src={defaultAvatar} alt="profile"
   className="w-16 h-16 rounded-full object-cover"
 />
 
@@ -113,8 +112,7 @@ useEffect(() => {
       <div className="profile-edit">
 
         <div className="edit-header">
-         <img
-  src={defaultAvatar} alt="profile"
+         <img src={defaultAvatar} alt="profile"
   className="w-16 h-16 rounded-full object-cover"
 />
 

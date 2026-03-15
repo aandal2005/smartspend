@@ -56,13 +56,13 @@ function Dashboard() {
     }
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-
 useEffect(() => {
     fetchExpenses();
   fetchBackendMonthly();
   fetchBackendCategory();
 
 }, [selectedYear]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
 
   const fetchSummary = async () => {

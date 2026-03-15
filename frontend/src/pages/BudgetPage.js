@@ -140,7 +140,6 @@ function BudgetPage() {
 
 };
 // eslint-disable-next-line react-hooks/exhaustive-deps
-
   useEffect(()=>{
 
     fetchStatus();
