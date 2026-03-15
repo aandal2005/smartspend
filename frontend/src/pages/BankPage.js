@@ -16,7 +16,7 @@ function BankPage() {
       try {
 
         const res = await axios.get(
-          "https://smartspend-backend.onrender.com/api/bank/budget-alert",
+          "https://smartspend-backend-tt84.onrender.com/api/bank/budget-alert",
           {
             headers: {
               Authorization: `Bearer ${token}`

@@ -17,7 +17,7 @@ function Register() {
     try {
 
       await axios.post(
-        "https://smartspend-backend.onrender.com/api/auth/register",
+        "https://smartspend-backend-tt84.onrender.com/api/auth/register",
         { name, email, password }
       );
 

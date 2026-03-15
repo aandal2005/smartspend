@@ -70,7 +70,7 @@ function BudgetPage() {
   try{
 
     const res = await axios.get(
-      `https://smartspend-backend.onrender.com/api/budget/status?month=${selectedDate.getMonth()+1}&year=${selectedDate.getFullYear()}`,
+      `https://smartspend-backend-tt84.onrender.com/api/budget/status?month=${selectedDate.getMonth()+1}&year=${selectedDate.getFullYear()}`,
       {
         headers:{
           Authorization:`Bearer ${localStorage.getItem("token")}`

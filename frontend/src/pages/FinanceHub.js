@@ -38,7 +38,7 @@ function FinanceHub() {
       /* ---------- GET BUDGET STATUS ---------- */
 
       const budgetRes = await axios.get(
-        `https://smartspend-backend.onrender.com/api/budget/status?month=${month+1}&year=${year}`,
+        `https://smartspend-backend-tt84.onrender.com/api/budget/status?month=${month+1}&year=${year}`,
         { headers:{ Authorization:`Bearer ${token}` } }
       );
 
@@ -51,7 +51,7 @@ function FinanceHub() {
       /* ---------- GET EXPENSES ---------- */
 
       const expenseRes = await axios.get(
-        "https://smartspend-backend.onrender.com/api/expenses",
+        "https://smartspend-backend-tt84.onrender.com/api/expenses",
         { headers:{ Authorization:`Bearer ${token}` } }
       );
 

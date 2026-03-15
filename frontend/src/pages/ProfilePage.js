@@ -31,7 +31,7 @@ useEffect(() => {
       try {
 
         const res = await axios.get(
-          "https://smartspend-backend.onrender.com/api/auth/profile",
+          "https://smartspend-backend-tt84.onrender.com/api/auth/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`
