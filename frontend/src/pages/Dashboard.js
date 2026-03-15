@@ -68,7 +68,7 @@ useEffect(() => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/expenses/summary/ai",
+        "https://smartspend-backend.onrender.com/api/expenses/summary/ai",
         config
       );
 
@@ -86,7 +86,7 @@ useEffect(() => {
   try {
 
     const res = await axios.get(
-      "http://localhost:5000/api/expenses",
+      "https://smartspend-backend.onrender.com/api/expenses",
       config
     );
 
@@ -103,7 +103,7 @@ useEffect(() => {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      "http://localhost:5000/api/expenses",
+      "https://smartspend-backend.onrender.com/api/expenses",
       newExpense,
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -122,7 +122,7 @@ useEffect(() => {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      "http://localhost:5000/api/expenses/upi-screenshot",
+      "https://smartspend-backend.onrender.com/api/expenses/upi-screenshot",
       formData,
       {
         headers: {
@@ -147,7 +147,7 @@ useEffect(() => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     await axios.delete(
-      `http://localhost:5000/api/expenses/${id}`,
+      `https://smartspend-backend.onrender.com/api/expenses/${id}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     fetchExpenses();
@@ -156,7 +156,7 @@ useEffect(() => {
   const handleUpdate = async (id) => {
     const token = localStorage.getItem("token");
     await axios.put(
-      `http://localhost:5000/api/expenses/${id}`,
+      `https://smartspend-backend.onrender.com/api/expenses/${id}`,
       editedData,
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -167,7 +167,7 @@ useEffect(() => {
   const fetchBackendMonthly = async () => {
 
   const res = await axios.get(
-    "http://localhost:5000/api/expenses/summary/monthly?year=2026",
+    "https://smartspend-backend.onrender.com/api/expenses/summary/monthly?year=2026",
     config
   );
 
@@ -177,7 +177,7 @@ useEffect(() => {
 const fetchBackendCategory = async () => {
 
   const res = await axios.get(
-    "http://localhost:5000/api/expenses/summary/category",
+    "https://smartspend-backend.onrender.com/api/expenses/summary/category",
     config
   );
 
@@ -186,7 +186,7 @@ const fetchBackendCategory = async () => {
   const generateAIInsight = async () => {
     const token = localStorage.getItem("token");
     const res = await axios.post(
-      "http://localhost:5000/api/expenses/ai-insights",
+      "https://smartspend-backend.onrender.com/api/expenses/ai-insights",
       { expenses },
       { headers: { Authorization: `Bearer ${token}` } }
     );

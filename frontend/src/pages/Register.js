@@ -17,7 +17,7 @@ function Register() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://smartspend-backend.onrender.com/api/auth/register",
         { name, email, password }
       );
 

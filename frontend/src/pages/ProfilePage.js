@@ -31,7 +31,7 @@ useEffect(() => {
       try {
 
         const res = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+          "https://smartspend-backend.onrender.com/api/auth/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ useEffect(() => {
     try {
 
       await axios.put(
-        "http://localhost:5000/api/user/update-profile",
+        "https://smartspend-backend.onrender.com/api/user/update-profile",
         { name, email, mobile, location },
         {
           headers: {
