@@ -7,6 +7,7 @@ function BankPage() {
   const [spent, setSpent] = useState(0);
   const remainingBalance = budget - spent;
   const token = localStorage.getItem("token");
+// eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
 
