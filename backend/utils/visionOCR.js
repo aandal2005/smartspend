@@ -1,7 +1,7 @@
 const vision = require("@google-cloud/vision");
 
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: "./google-vision-key.json"
+  credentials: JSON.parse(process.env.GOOGLE_VISION_KEY)
 });
 
 async function extractText(imagePath) {
