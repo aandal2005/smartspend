@@ -312,7 +312,7 @@ const importUPIScreenshot = async (req, res) => {
 
     const text = await extractText(req.file.path);
 
-    const cleanedText = text.replace(/\n+/g, " ");
+    const cleanedText = text.replace(/\n{2,}/g, "\n");
 
     const transactions = await parseWithGemini(cleanedText);
 
