@@ -1,6 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+app.use(
+  cors({
+    origin: "https://smartspend-seven.vercel.app",
+    credentials: true
+  })
+);
 const connectDB = require("./config/db");
 
 const expenseRoutes = require("./routes/expenseRoutes");
