@@ -1,12 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://smartspend-seven.vercel.app",
-    credentials: true
-  })
-);
+
 const connectDB = require("./config/db");
 
 const expenseRoutes = require("./routes/expenseRoutes");
@@ -18,8 +13,12 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
-app.use(express.json());
+app.use(
+  cors({
+    origin: "https://smartspend-seven.vercel.app",
+    credentials: true
+  })
+);app.use(express.json());
 app.use("/api/users", require("./routes/userRoutes"));
 app.get("/", (req, res) => {
   res.send("SmartSpend API running");

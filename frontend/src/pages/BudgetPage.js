@@ -92,7 +92,7 @@ function BudgetPage() {
     try{
 
       const res = await axios.get(
-  `hhttps://smartspend-backend.onrender.com/api/budget/analytics?month=${selectedDate.getMonth()+1}&year=${selectedDate.getFullYear()}`,
+  `https://smartspend-backend-tt84.onrender.com/api/budget/analytics?month=${selectedDate.getMonth()+1}&year=${selectedDate.getFullYear()}`,
   {
     headers:{
       Authorization:`Bearer ${localStorage.getItem("token")}`
@@ -116,7 +116,7 @@ function BudgetPage() {
   try{
 
     await axios.post(
-      "https://smartspend-backend.onrender.com/api/budget/setBudget",
+      "https://smartspend-backend-tt84.onrender.com/api/budget/setBudget",
       {
         monthlyLimit: Number(budget),
         month:selectedDate.getMonth()+1,
