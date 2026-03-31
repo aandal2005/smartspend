@@ -4,7 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../calendarDark.css";
 import React from "react";
-import API from "./api";
+import API from "../api";
 
 import {
   BarChart,
