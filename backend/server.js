@@ -13,12 +13,13 @@ const app = express();
 
 connectDB();
 
-app.use(
+  app.use(
   cors({
     origin: "https://smartspend-seven.vercel.app",
-    credentials: true
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
-);app.use(express.json());
+  );app.use(express.json());
 app.use("/api/users", require("./routes/userRoutes"));
 app.get("/", (req, res) => {
   res.send("SmartSpend API running");
