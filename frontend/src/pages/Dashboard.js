@@ -16,6 +16,7 @@ import {
   Pie,
   ResponsiveContainer,
 } from "recharts";
+
 function Dashboard() {
 
   const [expenses, setExpenses] = useState([]);
@@ -38,39 +39,28 @@ function Dashboard() {
   const [dateFilter, setDateFilter] = useState("");
 
   const [aiInsight, setAiInsight] = useState("");
-
   const [aiSummary, setAiSummary] = useState({});
 
-  // ✅ ADD THIS HERE
   const [newExpense, setNewExpense] = useState({
     description: "",
     amount: "",
     category: "",
   });
 
-  const token = localStorage.getItem("token");
-
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 useEffect(() => {
-    fetchExpenses();
+  fetchExpenses();
   fetchBackendMonthly();
   fetchBackendCategory();
-
 }, [selectedYear]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
 
+useEffect(() => {
   const fetchSummary = async () => {
     try {
+      const token = localStorage.getItem("token");
 
       const res = await axios.get(
         "https://smartspend-backend-tt84.onrender.com/api/expenses/summary/ai",
-        config
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       setAiSummary(res.data);
@@ -83,12 +73,14 @@ useEffect(() => {
   fetchSummary();
 
 }, [selectedDate]);
-  const fetchExpenses = async () => {
+
+const fetchExpenses = async () => {
   try {
+    const token = localStorage.getItem("token");
 
     const res = await axios.get(
       "https://smartspend-backend-tt84.onrender.com/api/expenses",
-      config
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     setExpenses(res.data);
@@ -100,19 +92,21 @@ useEffect(() => {
     console.error("Error fetching expenses:", error);
   }
 };
-  const handleAddExpense = async () => {
-    const token = localStorage.getItem("token");
 
-    await axios.post(
-      "https://smartspend-backend-tt84.onrender.com/api/expenses",
-      newExpense,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+const handleAddExpense = async () => {
+  const token = localStorage.getItem("token");
 
-    setNewExpense({ description: "", amount: "", category: "" });
-    fetchExpenses();
-  };
-  const handleUPIScreenshotUpload = async () => {
+  await axios.post(
+    "https://smartspend-backend-tt84.onrender.com/api/expenses",
+    newExpense,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  setNewExpense({ description: "", amount: "", category: "" });
+  fetchExpenses();
+};
+
+const handleUPIScreenshotUpload = async () => {
   if (!upiImage) return;
 
   const formData = new FormData();
@@ -145,54 +139,64 @@ useEffect(() => {
     setUpiLoading(false);
   }
 };
-  const handleDelete = async (id) => {
-    const token = localStorage.getItem("token");
-    await axios.delete(
-      `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    fetchExpenses();
-  };
 
-  const handleUpdate = async (id) => {
-    const token = localStorage.getItem("token");
-    await axios.put(
-      `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
-      editedData,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    setEditingId(null);
-    fetchExpenses();
-  };
-  
-  const fetchBackendMonthly = async () => {
+const handleDelete = async (id) => {
+  const token = localStorage.getItem("token");
+
+  await axios.delete(
+    `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  fetchExpenses();
+};
+
+const handleUpdate = async (id) => {
+  const token = localStorage.getItem("token");
+
+  await axios.put(
+    `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
+    editedData,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  setEditingId(null);
+  fetchExpenses();
+};
+
+const fetchBackendMonthly = async () => {
+  const token = localStorage.getItem("token");
 
   const res = await axios.get(
-    "https://smartspend-backend-tt84.onrender.com/api/expenses/summary/monthly?year=2026",
-    config
+    `https://smartspend-backend-tt84.onrender.com/api/expenses/summary/monthly?year=${selectedYear}`,
+    { headers: { Authorization: `Bearer ${token}` } }
   );
 
   setBackendMonthly(res.data);
 };
 
 const fetchBackendCategory = async () => {
+  const token = localStorage.getItem("token");
 
   const res = await axios.get(
     "https://smartspend-backend-tt84.onrender.com/api/expenses/summary/category",
-    config
+    { headers: { Authorization: `Bearer ${token}` } }
   );
 
   setBackendCategory(res.data);
 };
-  const generateAIInsight = async () => {
-    const token = localStorage.getItem("token");
-    const res = await axios.post(
-      "https://smartspend-backend-tt84.onrender.com/api/expenses/ai-insights",
-      { expenses },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    setAiInsight(res.data.insight);
-  };
+
+const generateAIInsight = async () => {
+  const token = localStorage.getItem("token");
+
+  const res = await axios.post(
+    "https://smartspend-backend-tt84.onrender.com/api/expenses/ai-insights",
+    { expenses },
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  setAiInsight(res.data.insight);
+};
 
   const filteredExpenses = expenses.filter((exp) => {
     const matchCategory = categoryFilter
