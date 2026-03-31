@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import CountUp from "react-countup";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../calendarDark.css";
 import React from "react";
+import API from "../api";
 
 import {
   BarChart,
@@ -56,52 +56,30 @@ useEffect(() => {
 useEffect(() => {
   const fetchSummary = async () => {
     try {
-      const token = localStorage.getItem("token");
-
-      const res = await axios.get(
-        "https://smartspend-backend-tt84.onrender.com/api/expenses/summary/ai",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
+      const res = await API.get("/api/expenses/summary/ai");
       setAiSummary(res.data);
-
     } catch (error) {
       console.error("AI summary error:", error);
     }
   };
 
   fetchSummary();
-
 }, [selectedDate]);
 
 const fetchExpenses = async () => {
   try {
-    const token = localStorage.getItem("token");
-
-    const res = await axios.get(
-      "https://smartspend-backend-tt84.onrender.com/api/expenses",
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-
+    const res = await API.get("/api/expenses");
     setExpenses(res.data);
 
     const sum = res.data.reduce((acc, item) => acc + Number(item.amount), 0);
     setTotal(sum);
-
   } catch (error) {
     console.error("Error fetching expenses:", error);
   }
 };
 
 const handleAddExpense = async () => {
-  const token = localStorage.getItem("token");
-
-  await axios.post(
-    "https://smartspend-backend-tt84.onrender.com/api/expenses",
-    newExpense,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  await API.post("/api/expenses", newExpense);
   setNewExpense({ description: "", amount: "", category: "" });
   fetchExpenses();
 };
@@ -114,18 +92,10 @@ const handleUPIScreenshotUpload = async () => {
 
   try {
     setUpiLoading(true);
-    const token = localStorage.getItem("token");
 
-    await axios.post(
-      "https://smartspend-backend-tt84.onrender.com/api/expenses/upi-screenshot",
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    await API.post("/api/expenses/upi-screenshot", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
     alert("✅ UPI Expense Added Successfully");
     setUpiImage(null);
@@ -141,60 +111,28 @@ const handleUPIScreenshotUpload = async () => {
 };
 
 const handleDelete = async (id) => {
-  const token = localStorage.getItem("token");
-
-  await axios.delete(
-    `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  await API.delete(`/api/expenses/${id}`);
   fetchExpenses();
 };
 
 const handleUpdate = async (id) => {
-  const token = localStorage.getItem("token");
-
-  await axios.put(
-    `https://smartspend-backend-tt84.onrender.com/api/expenses/${id}`,
-    editedData,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  await API.put(`/api/expenses/${id}`, editedData);
   setEditingId(null);
   fetchExpenses();
 };
 
 const fetchBackendMonthly = async () => {
-  const token = localStorage.getItem("token");
-
-  const res = await axios.get(
-    `https://smartspend-backend-tt84.onrender.com/api/expenses/summary/monthly?year=${selectedYear}`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  const res = await API.get(`/api/expenses/summary/monthly?year=${selectedYear}`);
   setBackendMonthly(res.data);
 };
 
 const fetchBackendCategory = async () => {
-  const token = localStorage.getItem("token");
-
-  const res = await axios.get(
-    "https://smartspend-backend-tt84.onrender.com/api/expenses/summary/category",
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  const res = await API.get("/api/expenses/summary/category");
   setBackendCategory(res.data);
 };
 
 const generateAIInsight = async () => {
-  const token = localStorage.getItem("token");
-
-  const res = await axios.post(
-    "https://smartspend-backend-tt84.onrender.com/api/expenses/ai-insights",
-    { expenses },
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
+  const res = await API.post("/api/expenses/ai-insights", { expenses });
   setAiInsight(res.data.insight);
 };
 
